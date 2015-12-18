@@ -66,7 +66,7 @@
 				<h2>Grades of Students</h2>
 
 			</div>
-			<div id="grades" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				<div id="grades" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 			<br>
 		</div>
 		

@@ -202,6 +202,52 @@
                 redirect('professorlogin', 'refresh');
             }
         }
+
+        function class_list_pdf(){    
+
+            if($this->session->userdata('logged_in')){
+                $section = $this->uri->segment(3);
+                $course = $this->uri->segment(4);
+
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+                $data['fname'] = $session_data['fname'];
+                $data['lname'] = $session_data['lname'];
+                $data['dept'] = $session_data['dept'];
+
+                $data['title'] = 'Tablet Class Manager';
+                $data['schedule'] = $this->professor_model->schedule($data);
+
+                $data_table = array();
+                
+                $query =  $this->db->query('SELECT * FROM students a, students_sections b, sections c, professors_sections d, professors e, courses_sections f, courses g 
+                    where b.section_code = c.section_code and b.student_username = a.student_username and d.section_code = b.section_code and d.professor_username = e.professor_username and f.section_code = c.section_code and f.course_code = g.course_code
+                    and b.section_code = \'' . $this->uri->segment(3) . '\' and f.course_code = \'' . $this->uri->segment(4) . '\' and e.professor_username = \'' . $data['username'] . '\''  );
+                
+                $data_table = array();
+                foreach ($query->result_array() as $row) {
+                    $data_table[] = $row;
+                }
+                
+                $title = $course . ' - ' . $section . ' Class List';
+
+                $column_header=array(
+                    'student_number' => 'Student Number',
+                    'student_fname' => 'Student First Name',
+                    'student_lname' => 'Student Last Name',
+                    'student_program' => 'Program',
+                    'student_yrlvl' => 'Year',
+                      
+                );
+
+                $this->cezpdf->ezTable($data_table , $column_header, $title, array('height'=>975));
+                $this->cezpdf->ezStream();
+            
+            }else{
+                //If no session, redirect to login page
+                redirect('professorlogin', 'refresh');
+            }
+        }
     }
 
 ?>
