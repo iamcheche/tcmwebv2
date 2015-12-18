@@ -17,7 +17,7 @@
 	<br>
 	<div class="row" >
 		<div class = "col-md-5" style="background-color:#222; color:#fff; text-align:center; padding:10px;">
-			<a href="#openStudent">Add Student</a> 
+			<a href="#openStudent">Search Student</a> 
 				<div id="openStudent" class="modalDialog">
                     <div>
                     	<a href="" title="Close" class="close">X</a>

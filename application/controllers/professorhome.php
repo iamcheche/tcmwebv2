@@ -7,6 +7,9 @@
             $this->load->model('professor_model');
             $this->load->helper('url');
             $this->load->helper('form');
+            $this->load->library('cezpdf');
+            $this->load->helper('pdf');
+        
         }
 
         function index(){
@@ -151,6 +154,53 @@
                 redirect('professorhome/show_students', 'refresh');
             }
         
+        }
+
+        function schedule_pdf(){    
+
+            if($this->session->userdata('logged_in')){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+                $data['fname'] = $session_data['fname'];
+                $data['lname'] = $session_data['lname'];
+                $data['dept'] = $session_data['dept'];
+
+                $data['title'] = 'Tablet Class Manager';
+                $data['schedule'] = $this->professor_model->schedule($data);
+
+                $data_table = array();
+                    
+                /*if ($query = $this->professor_model->schedule($data)){
+                    foreach ($query as $row) {
+
+                    }   
+                }*/
+
+                $query =  $this->db->query('SELECT * FROM schedules where professor_username = \'' . $data['username'] . '\'' );
+                
+                $data_table = array();
+                foreach ($query->result_array() as $row) {
+                    $data_table[] = $row;
+                }
+                
+                $title = $data['fname'] . ' ' . $data['lname'] . '\'s Schedule';
+
+                $column_header=array(
+                    'days' => 'Days',
+                    'course_code' => 'Course',
+                    'time_start' => 'Time Start',
+                    'time_end' => 'Time End',
+                    'room' => 'Room',
+                    'section_code' => 'Section',
+                );
+
+                $this->cezpdf->ezTable($data_table , $column_header, $title, array('height'=>975));
+                $this->cezpdf->ezStream();
+            
+            }else{
+                //If no session, redirect to login page
+                redirect('professorlogin', 'refresh');
+            }
         }
     }
 

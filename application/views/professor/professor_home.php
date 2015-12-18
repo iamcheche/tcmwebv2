@@ -21,7 +21,7 @@
 				
 				<div class="row">
 					<div class="col-md-4">
-						<a href="">Print Schedule</a>
+						<a href="professorhome/schedule_pdf">Print Schedule</a>
 					</div>
 					
 				</div>
