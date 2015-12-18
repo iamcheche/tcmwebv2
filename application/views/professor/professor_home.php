@@ -18,8 +18,14 @@
 		<div class = "col-md-5" style="background-color:#444; color:#fff;border-radius:10px;">
 			<div style="background-color:#444; color:#fff;">
 				<h4 style=" text-align: center; ">My Schedule</h4>
+				
+				<div class="row">
+					<div class="col-md-4">
+						<a href="">Print Schedule</a>
+					</div>
+					
+				</div>
 				<br>
-
 				<div class = "table-responsive">
 			        <table class = "table" style="width:100%;">
 			            <thead style="background-color:#222; color:#fff; text-align:center;">
@@ -40,7 +46,7 @@
 	                    		<td><?php echo $row->time_start . ' - ' . $row->time_end ?></td>
 	                            <td><?php echo $row->room ?></td>
 	                            <td><?php echo $row->section_code ?></td>
-	                            <td><a href=""> View Students</a></td>
+	                            <td><?php echo anchor("professorhome/show_students/$row->section_code/$row->course_code", 'View Students' ); ?></td>
 	                    	</tr>
 		                    <?php endforeach; ?>
 		            		<?php else : ?>     

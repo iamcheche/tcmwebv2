@@ -31,7 +31,7 @@
                         <input type="text" size="20" id="search_student" name="search_student" class="form-control" placeholder="Student Name or Student Number"/>
                         
                         <br>
-                        <input type="submit" value="Search Student" class = "form-control" style = "background-color:#191919; color:#fff; border-radius:5px;"/>
+                        <input type="submit" value="Add This Student To Class" class = "form-control" style = "background-color:#191919; color:#fff; border-radius:5px;"/>
                         </form>
                         <br>              
                     </div>      
@@ -50,6 +50,7 @@
             			<th style="text-align:center;">Student Number </th>
             			<th style="text-align:center;">Student Name</th>
             			<th style="text-align:center;">Program/Year</th>
+                        <th style="text-align:center;">Action</th>
             		</tr>
             	</thead>
             	<tbody class = "table-striped" style="background-color:#e5e5ff;"> 
@@ -63,12 +64,13 @@
                     		</td>
                     		<td style="text-align:left;"><b> <?php echo $row->student_lname . ', ' . $row->student_fname ?></b></td>
                     		<td style="text-align:left;"> <b><?php echo $row->student_program . '</b>/<b>' . $row->student_yrlvl ?></b></td>
+                            <td style="text-align:center;"> <b><?php echo anchor("professorhome/show_students/" . $section . '/' . $course , 'Add' ); ?></b></td>
                     		<?php $count++; ?>
                     	</tr>
                     	
                     <?php endforeach; ?>
                         <tr>
-                    		<td colspan="2"> Total Number of Students Enrolled:</td>
+                    		<td colspan="3"> Search Result Total:</td>
                     		<td><?php echo $count ?></td>
                     	</tr>
             		<?php else : ?>     

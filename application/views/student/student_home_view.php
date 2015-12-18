@@ -53,6 +53,7 @@
             			<th>Units</th>
                         <th>Schedule</th>
             			<th>Professor</th>
+                        <th>Section</th>
                         <th>Options</th>
             		</tr>
             	</thead>
@@ -64,7 +65,8 @@
                     		<td><?php echo $row->credit_unit ?></td>
                             <td><?php echo $row->days ?> / <?php echo $row->time_start ?> - <?php echo $row->time_end ?> @ <?php echo $row->room ?></td>
                             <td><?php echo $row->professor_fname ?> <?php echo $row->professor_lname ?></td>
-                    		<td>
+                            <td><?php echo $row->section_code ?></td>
+                            <td>
                                 <?php echo anchor("studenthome/show_view_grade/$row->course_code", 'View Grades'); ?>
                             </td>
                     	</tr>

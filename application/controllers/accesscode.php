@@ -33,13 +33,15 @@
                 
                 
 
-                $this->email->from('eblast.noreply@gmail.com', 'Access Code - NOREPLY');
+                $this->email->from('eblast.noreply@gmail.com', 'Login Token - NOREPLY');
                 $this->email->to($email);
-                $this->email->subject('Your Accss Code to login');
-                $this->email->message('Your access code is: ' . $string . '.');
+                $this->email->subject('Login Token');
+                $this->email->message('Your Login Token is: <b>' . $string . '</b>.');
 
                 if ($this->email->send()){
+                    $this->load->view('template/professor/professor_header');
                     $this->load->view('professor/access_code');
+                    $this->load->view('template/professor/professor_footer');
 
                     $data = array(
                         'professor_username' => $this->input->post('username'), 

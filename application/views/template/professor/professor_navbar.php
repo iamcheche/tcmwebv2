@@ -18,7 +18,7 @@
             </ul>
          
             <ul class="nav navbar-nav navbar-right">
-                <li><a href=""><b>Account Setting</b></a></li>        
+                <li><?php echo anchor("professorhome/show_professor/" . $username, 'Update Account');?> </li>        
                 <li><a href="<?php echo base_url('professorlogout') ?>"><b>Logout</b></a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

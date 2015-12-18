@@ -69,7 +69,7 @@
 					<table class = "table" style="width:100%; text-align:center;">
 						<thead style="background-color:#222; color:#fff;">
 		            		<tr>
-		            			<th colspan="4" style= "text-align:center;"><b >PRELIM</b></th>
+		            			<th colspan="4" style= "text-align:center;"><b>PRELIM</b></th>
 		            		</tr>
 		            		<tr>
 		            			<th style="text-align:center;">Component Name</th>
