@@ -124,6 +124,19 @@
 			);
 			$this->db->insert('students_courses', $data);
 		}
+
+	    function get_students() {     
+	        $query = $this->db->get('students');
+	        if ($query->num_rows() > 0) {
+	            return $query->result_array();
+	        } else {
+	            return FALSE;
+	        }
+    	}
+        function upload_students($insert_data){
+            $this->db->insert('students', $insert_data);
+        }
+
 	}
 ?>
 		

@@ -19,7 +19,8 @@
                 redirect('professorhome', $data);
             }else{
                 //If no session, redirect to login page
-                $this->load->view('/template/professor/professor_header');
+                $data['title'] = 'Tablet Class Manager';
+                $this->load->view('/template/professor/professor_header', $data);
                 //$this->load->view('/template/professor/professor_login_navbar');     
             	$this->load->view('professor/professor_login');
             	$this->load->view('/template/professor/professor_footer');

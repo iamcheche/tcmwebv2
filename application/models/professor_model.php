@@ -87,5 +87,21 @@
   			$show_students = $this->db->get('students');
   			return $show_students->result();
 		}
+
+		function get_students() {     
+	        $query = $this->db->get('schedules_courses_sections_professors_students');
+	        if ($query->num_rows() > 0) {
+	            return $query->result_array();
+	        } else {
+	            return FALSE;
+	        }
+    	}
+        function upload_students($insert_data){
+            $this->db->insert('schedules_courses_sections_professors_students', $insert_data);
+        }
+
+        function activity($data){
+            $this->db->insert('activities', $data);
+        }
 	}
 ?>

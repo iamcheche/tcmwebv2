@@ -1,7 +1,8 @@
 <div class = "container">
 	<div class = "col-md-1"></div>
 	<div class =  "col-md-10">
-		<div class="row">
+
+        <div class="row">
 			<?php 
 				$student_number = array('id' => 'student_number' , 'name' => 'student_number', 'class' => 'form-control', 'placeholder' => 'Student Nunmber'  );
 				$student_fname = array('id' => 'student_fname' , 'name' => 'student_fname', 'class' => 'form-control', 'placeholder' => 'Student First Name'  );

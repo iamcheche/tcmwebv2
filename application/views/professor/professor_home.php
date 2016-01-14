@@ -21,7 +21,7 @@
 				
 				<div class="row">
 					<div class="col-md-4">
-						<a href="professorhome/schedule_pdf">Print Schedule</a>
+						<a href="professorhome/schedule_pdf" target="blank"><b>Print Schedule</b></a>
 					</div>
 					
 				</div>
@@ -39,14 +39,14 @@
 			                </tr>
 			            </thead>                        
 			            <tbody style="background-color:#e5e5ff; color:#191919;">
-			            	<?php if(isset($schedule)) : foreach ($schedule as $row) : ?>
+			            	<?php if(isset($schedules)) : foreach ($schedules as $row) : ?>
 	                    	<tr>
 	                    		<td><?php echo $row->days ?></td>
 	                    		<td><?php echo $row->course_code ?></td>
 	                    		<td><?php echo $row->time_start . ' - ' . $row->time_end ?></td>
 	                            <td><?php echo $row->room ?></td>
 	                            <td><?php echo $row->section_code ?></td>
-	                            <td><?php echo anchor("professorhome/show_students/$row->section_code/$row->course_code", 'View Students' ); ?></td>
+	                            <td><?php echo anchor("professorhome/show_students/$row->section_code/$row->course_code/$row->schedule_id", 'View Students' ); ?></td> <!-- by: JR -->
 	                    	</tr>
 		                    <?php endforeach; ?>
 		            		<?php else : ?>     
@@ -63,10 +63,9 @@
 		
 		<div class = "col-md-6" style="background-color:#444; color:#fff;">
 			<div style="background-color:#444; color:#fff; text-align: center;">
-				<h2>Grades of Students</h2>
+				<h2>Events Scheduler</h2>
 
 			</div>
-				<div id="grades" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 			<br>
 		</div>
 		
